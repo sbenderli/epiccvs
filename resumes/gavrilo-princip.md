@@ -1,3 +1,8 @@
+<!-- 
+title: Gavrilo Princip
+role: Political Activist
+id: gavrilo-princip
+-->
 # Gavrilo Princip  
 **Political Activist | Catalyst of Global Change**  
 📍 Sarajevo | 🌍 Open to relocation (remote opportunities preferred)  

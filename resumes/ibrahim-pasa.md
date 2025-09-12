@@ -1,3 +1,8 @@
+<!-- 
+title: İbrahim Paşa
+role: Grand Vizier
+id: ibrahim-pasa
+-->
 # İbrahim Paşa  
 **Former Grand Vizier (Prime Minister equivalent), Ottoman Empire**  
 📍 Constantinople | 🌍 Available for relocation  

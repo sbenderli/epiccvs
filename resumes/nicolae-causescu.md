@@ -1,3 +1,8 @@
+<!-- 
+title: Nicolae Ceaușescu
+role: Dictator
+id: nicolae-causescu
+-->
 # Nicolae Ceaușescu  
 *Seeking remote opportunities in absolute power, central planning, and personality cult management*  
 

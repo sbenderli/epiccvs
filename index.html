@@ -220,37 +220,67 @@
       });
     }
 
-    async function load(id) {
-      const r = RESUMES.find(x => x.id === id) || RESUMES[0];
-      if (!r) return;
+    async function loadManifest() {
+      const res = await fetch("./resumes.json", { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    }
 
-      // Update toolbar links
-      document.getElementById("meta").textContent = `${r.title} • ${r.role}`;
-      document.getElementById("viewRaw").href = r.md;
-
-      // DEBUG: log what we’re trying to fetch
-      console.log("🔍 Trying to fetch:", r.md);
-
+    (async () => {
       try {
-        const res = await fetch(r.md, { cache: "no-store" });
-        console.log("✅ Fetch response:", res);
+        const items = await loadManifest(); // comes from resumes.json
+        const list = document.getElementById("list");
+        const content = document.getElementById("content");
+        const meta = document.getElementById("meta");
 
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status} at ${res.url}`);
+        // render sidebar
+        list.innerHTML = items.map(r => `
+          <a class="item" href="#${r.id}" data-md="${r.md}">
+            <div class="title">${r.title}</div>
+            <div class="sub">${r.role}</div>
+          </a>`).join("");
+
+        // lookup table
+        const byId = Object.fromEntries(items.map(r => [r.id, r]));
+
+        async function pick(id) {
+          const r = byId[id] || items[0];
+          meta.textContent = `${r.title} • ${r.role}`;
+          [...list.children].forEach(el =>
+            el.classList.toggle("active", el.getAttribute("href") === "#" + r.id)
+          );
+
+          try {
+            const res = await fetch(r.md, { cache: "no-store" });
+            if (!res.ok) throw new Error(`HTTP ${res.status} ${r.md}`);
+            const md = await res.text();
+            marked.setOptions({ mangle: true, headerIds: true });
+            content.innerHTML = marked.parse(md);
+          } catch (e) {
+            console.error(e);
+            content.innerHTML =
+              `<p class="muted">Could not load Markdown.<br>${e.message}</p>`;
+          }
         }
 
-        const md = await res.text();
-        console.log("📄 Markdown text loaded, length:", md.length);
+        // hook up hash navigation
+        window.addEventListener("hashchange", () =>
+          pick(location.hash.slice(1))
+        );
 
-        marked.setOptions({ mangle: true, headerIds: true });
-        document.getElementById("content").innerHTML = marked.parse(md);
-        console.log("🎉 Render complete");
+        // initial load
+        if (location.hash) {
+          pick(location.hash.slice(1));
+        } else if (items.length) {
+          location.hash = "#" + items[0].id;
+        }
+
       } catch (e) {
-        console.error("❌ Error loading markdown:", e);
+        console.error("Manifest load failed:", e);
         document.getElementById("content").innerHTML =
-          `<p class="muted">Could not load Markdown.<br>${e.message}</p>`;
+          `<p class="muted">Failed to load manifest.<br>${e.message}</p>`;
       }
-    }
+    })();
 
     window.addEventListener("hashchange", () => {
       const id = location.hash.replace("#", "");

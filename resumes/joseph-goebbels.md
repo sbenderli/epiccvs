@@ -1,3 +1,8 @@
+<!-- 
+title: Joseph Goebbels
+role: Propaganda Executive
+id: joseph-goebbels
+-->
 # Joseph Goebbels  
 **Propaganda Executive | Minister of Spin**  
 📍 Argentine (exact location unavailable) | 🌍 Only seeking remote opportunities  

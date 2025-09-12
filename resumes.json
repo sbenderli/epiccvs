@@ -1,0 +1,26 @@
+[
+  {
+    "id": "gavrilo-princip",
+    "title": "Gavrilo Princip",
+    "role": "Political Activist",
+    "md": "./resumes/gavrilo-princip.md"
+  },
+  {
+    "id": "ibrahim-pasa",
+    "title": "İbrahim Paşa",
+    "role": "Grand Vizier",
+    "md": "./resumes/ibrahim-pasa.md"
+  },
+  {
+    "id": "joseph-goebbels",
+    "title": "Joseph Goebbels",
+    "role": "Propaganda Executive",
+    "md": "./resumes/joseph-goebbels.md"
+  },
+  {
+    "id": "nicolae-causescu",
+    "title": "Nicolae Ceaușescu",
+    "role": "Dictator",
+    "md": "./resumes/nicolae-causescu.md"
+  }
+]
