@@ -22,5 +22,11 @@
     "title": "Nicolae Ceaușescu",
     "role": "Dictator",
     "md": "./resumes/nicolae-causescu.md"
+  },
+  {
+    "id": "vlad-tepes",
+    "title": "Vlad III “Țepeș” (The Impaler)",
+    "role": "Voivode of Terror",
+    "md": "./resumes/vlad-tepes.md"
   }
 ]
