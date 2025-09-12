@@ -1,2 +1,2 @@
-# epiccvs
-Repository of cvs from history
+# EPIC CVs
+Repository of historical cvs
