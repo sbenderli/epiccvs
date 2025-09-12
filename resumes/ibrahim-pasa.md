@@ -52,12 +52,8 @@ Accomplished statesman and strategist with 20+ years of leadership at the highes
 ---
 
 ## References  
-- **Sultan Süleyman I** – Former employer. (Contact discretion advised due to recent separation.)  
-- **Hürrem Sultan** – Influential stakeholder. Endorsements may vary.  
+- **Sultan Süleyman I** – Former employer (contact discretion advised).  
+- **Hürrem Sultan** – Influential stakeholder; endorsements may vary.  
 - **Ambassador Jean de La Forêt (France)** – Endorsement for alliance negotiation and cross-cultural diplomacy.  
 - **Barbarossa Hayreddin Pasha** – Endorsement on strategic coordination and naval dominance.  
 - **Venetian Bailo in Constantinople** – Testimonial on trade negotiations and conflict mediation.  
-
----
-
-📄 [Download PDF version](../files/Ibrahim_Pasa_Resume.pdf)
