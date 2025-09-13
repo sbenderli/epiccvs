@@ -6,6 +6,12 @@
     "md": "./resumes/gavrilo-princip.md"
   },
   {
+    "id": "hurrem-sultan",
+    "title": "Hürrem Sultan",
+    "role": "Imperial Consort & DEI Champion",
+    "md": "./resumes/hurem-sultan.md"
+  },
+  {
     "id": "ibrahim-pasa",
     "title": "İbrahim Paşa",
     "role": "Grand Vizier",
