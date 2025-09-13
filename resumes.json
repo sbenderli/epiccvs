@@ -1,5 +1,19 @@
 [
   {
+    "id": "marcus-brutus",
+    "title": "Marcus Junius Brutus",
+    "role": "Senator & Assassin",
+    "tags": [
+      "assassination",
+      "rome",
+      "betrayal",
+      "republic",
+      "100s-bce",
+      "antifa"
+    ],
+    "md": "./resumes/brutus.md"
+  },
+  {
     "id": "gavrilo-princip",
     "title": "Gavrilo Princip",
     "role": "Political Activist",
