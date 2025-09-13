@@ -2,6 +2,7 @@
 title: Gavrilo Princip
 role: Political Activist
 id: gavrilo-princip
+tags: assassination, sarajevo, 1900s, ww1, activism
 -->
 # Gavrilo Princip  
 **Political Activist | Catalyst of Global Change**  

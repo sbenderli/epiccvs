@@ -3,36 +3,78 @@
     "id": "gavrilo-princip",
     "title": "Gavrilo Princip",
     "role": "Political Activist",
+    "tags": [
+      "assassination",
+      "sarajevo",
+      "1900s",
+      "ww1",
+      "activism"
+    ],
     "md": "./resumes/gavrilo-princip.md"
   },
   {
     "id": "hurrem-sultan",
     "title": "Hürrem Sultan",
     "role": "Imperial Consort & DEI Champion",
+    "tags": [
+      "ottoman",
+      "1500s",
+      "dei",
+      "philanthropy",
+      "female"
+    ],
     "md": "./resumes/hurem-sultan.md"
   },
   {
     "id": "ibrahim-pasa",
     "title": "İbrahim Paşa",
     "role": "Grand Vizier",
+    "tags": [
+      "grand-vizier",
+      "ottoman",
+      "1500s",
+      "diplomacy",
+      "military"
+    ],
     "md": "./resumes/ibrahim-pasa.md"
   },
   {
     "id": "joseph-goebbels",
     "title": "Joseph Goebbels",
     "role": "Propaganda Executive",
+    "tags": [
+      "propaganda",
+      "nazi-germany",
+      "1900s",
+      "disinformation",
+      "ww2"
+    ],
     "md": "./resumes/joseph-goebbels.md"
   },
   {
     "id": "nicolae-causescu",
     "title": "Nicolae Ceaușescu",
     "role": "Dictator",
+    "tags": [
+      "romania",
+      "communism",
+      "1900s",
+      "dictator",
+      "cold-war"
+    ],
     "md": "./resumes/nicolae-causescu.md"
   },
   {
     "id": "vlad-tepes",
     "title": "Vlad III “Țepeș” (The Impaler)",
     "role": "Voivode of Terror",
+    "tags": [
+      "voivode",
+      "wallachia",
+      "1400s",
+      "military",
+      "romania"
+    ],
     "md": "./resumes/vlad-tepes.md"
   }
 ]

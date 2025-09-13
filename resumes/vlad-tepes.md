@@ -2,6 +2,7 @@
 title: Vlad III “Țepeș” (The Impaler)
 role: Voivode of Terror
 id: vlad-tepes
+tags: voivode, wallachia, 1400s, military, romania
 -->
 # Vlad III “Țepeș” (The Impaler)  
 *Open to leadership roles in deterrence, asymmetric warfare, enhanced interrogation techniques, guerrilla warfare, and psy-ops*  

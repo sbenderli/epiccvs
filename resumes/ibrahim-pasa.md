@@ -2,6 +2,7 @@
 title: İbrahim Paşa
 role: Grand Vizier
 id: ibrahim-pasa
+tags: grand-vizier, ottoman, 1500s, diplomacy, military
 -->
 # İbrahim Paşa  
 **Former Grand Vizier (Prime Minister equivalent), Ottoman Empire**  

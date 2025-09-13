@@ -2,6 +2,7 @@
 title: Nicolae Ceaușescu
 role: Dictator
 id: nicolae-causescu
+tags: romania, communism, 1900s, dictator, cold-war
 -->
 # Nicolae Ceaușescu  
 *Seeking remote opportunities in absolute power, central planning, and personality cult management*  

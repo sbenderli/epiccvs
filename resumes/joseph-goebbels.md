@@ -2,6 +2,7 @@
 title: Joseph Goebbels
 role: Propaganda Executive
 id: joseph-goebbels
+tags: propaganda, nazi-germany, 1900s, disinformation, ww2
 -->
 # Joseph Goebbels  
 **Propaganda Executive | Minister of Spin**  

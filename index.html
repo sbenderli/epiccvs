@@ -6,9 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Markdown renderer -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    console.log("✅ marked version:", marked.version);
-  </script>
+  <script>console.log("✅ marked version:", marked.version);</script>
   <style>
     :root {
       --bg: #0f172a;
@@ -113,7 +111,9 @@
       border-bottom: 1px solid var(--border);
       padding-bottom: 12px;
       margin-bottom: 18px;
+      flex-wrap: wrap;
     }
+    .meta-wrap { display:flex; flex-direction:column; gap:6px }
     .btn {
       padding: 8px 12px;
       border: 1px solid var(--border);
@@ -124,6 +124,16 @@
       font-size: 14px;
     }
     .muted { color: var(--ink-dim); font-size: 12px }
+
+    /* tag chips */
+    .tags{display:flex; flex-wrap:wrap; gap:6px}
+    .tag{
+      padding:4px 8px; border:1px solid var(--border); border-radius:999px;
+      font-size:.75rem; color:var(--ink-dim); background:#0a0f1a;
+      user-select:none;
+    }
+    .tag:hover{border-color:#263244; color:#e5e7eb}
+
     @media (max-width: 900px) {
       body {
         grid-template-columns: 1fr;
@@ -136,17 +146,27 @@
       aside { max-height: 40vh }
       #search { width: 45vw }
     }
+
+    /* fixed footer that doesn't steal layout height */
+    footer.site-footer{
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      background: #0b1220;
+      border-top: 1px solid #1f2937;
+      color: #9ca3af;
+      font-size: 0.85em;
+      text-align: center;
+      padding: 10px 12px;
+      z-index: 100;
+      backdrop-filter: saturate(120%) blur(2px);
+    }
+    main { padding-bottom: 64px; } /* space for fixed footer */
   </style>
 </head>
-<footer style="margin-top:2rem; padding:1rem; border-top:1px solid #333; font-size:0.85em; color:#9ca3af; text-align:center;">
-  ⚠️ <strong>Disclaimer:</strong> This website is a work of <em>satire</em>.  
-  The résumés are fictional and created for humor, commentary, and educational purposes only.  
-  They should not be taken as factual or as endorsements of the individuals depicted.  
-</footer>
 <body>
   <header>
     <h1>EPIC CVs</h1>
-    <input id="search" type="search" placeholder="Filter list" aria-label="Filter resumes" />
+    <input id="search" type="search" placeholder="Filter by name, role, or tag" aria-label="Filter resumes" />
   </header>
 
   <aside>
@@ -156,7 +176,10 @@
   <main>
     <div class="doc">
       <div class="toolbar">
-        <div id="meta" class="muted">Select a resume</div>
+        <div class="meta-wrap">
+          <div id="meta" class="muted">Select a resume</div>
+          <div id="tags" class="tags"></div>
+        </div>
         <div>
           <a id="viewRaw" class="btn" href="#" target="_blank" rel="noopener">View raw MD</a>
         </div>
@@ -165,53 +188,49 @@
     </div>
   </main>
 
-  <script>
-    // Configure your resumes here
-    const RESUMES = [
-      {
-        id: "ibrahim-pasa",
-        title: "İbrahim Paşa",
-        role: "Grand Vizier",
-        md: "./resumes/ibrahim-pasa.md",
-      },
-      {
-        id: "gavrilo-princip",
-        title: "Gavrilo Princip",
-        role: "Political Activist",
-        md: "./resumes/gavrilo-princip.md",
-      },
-      {
-        id: "joseph-goebbels",
-        title: "Joseph Goebbels",
-        role: "Propaganda Executive",
-        md: "./resumes/joseph-goebbels.md",
-      }
-    ];
+  <footer class="site-footer">
+    ⚠️ <strong>Disclaimer:</strong> This website is a work of <em>satire</em>.
+    The résumés are fictional and created for humor, commentary, and educational purposes only.
+    They should not be taken as factual or as endorsements of the individuals depicted.
+  </footer>
 
+  <script>
     const $list = document.getElementById("list");
     const $content = document.getElementById("content");
     const $meta = document.getElementById("meta");
+    const $tags = document.getElementById("tags");
     const $search = document.getElementById("search");
     const $viewRaw = document.getElementById("viewRaw");
 
+    let ITEMS = [];
+    let byId = {};
+
+    async function loadManifest() {
+      const res = await fetch("./resumes.json", { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    }
+
     function renderList(filter = "") {
-      $list.innerHTML = "";
       const q = filter.trim().toLowerCase();
-      const items = RESUMES.filter(r =>
-        !q || r.title.toLowerCase().includes(q) || r.role.toLowerCase().includes(q)
-      );
-      for (const r of items) {
-        const a = document.createElement("a");
-        a.className = "item";
-        a.href = `#${r.id}`;
-        a.innerHTML = `
+      const match = (r) => {
+        if (!q) return true;
+        if (r.title.toLowerCase().includes(q)) return true;
+        if (r.role.toLowerCase().includes(q)) return true;
+        if (Array.isArray(r.tags) && r.tags.some(t => t.toLowerCase().includes(q))) return true;
+        return false;
+      };
+      const items = ITEMS.filter(match);
+
+      $list.innerHTML = items.map(r => `
+        <a class="item" href="#${r.id}" data-id="${r.id}">
           <div>
             <div class="title">${r.title}</div>
             <div class="sub">${r.role}</div>
           </div>
-        `;
-        $list.appendChild(a);
-      }
+        </a>
+      `).join("");
+
       markActive();
       if (items.length === 0) {
         $list.innerHTML = `<div class="muted" style="padding:10px">No matches</div>`;
@@ -225,82 +244,61 @@
       });
     }
 
-    async function loadManifest() {
-      const res = await fetch("./resumes.json", { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.json();
+    async function pick(id) {
+      const r = byId[id] || ITEMS[0];
+      if (!r) return;
+
+      // header + tags
+      $meta.textContent = `${r.title} • ${r.role}`;
+      const tags = Array.isArray(r.tags) ? r.tags : [];
+      $tags.innerHTML = tags.map(t => `<span class="tag" data-tag="${t}">${t}</span>`).join("");
+
+      markActive();
+      $viewRaw.href = r.md;
+
+      try {
+        const res = await fetch(r.md, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status} ${r.md}`);
+        const md = await res.text();
+        marked.setOptions({ mangle: true, headerIds: true });
+        $content.innerHTML = marked.parse(md);
+      } catch (e) {
+        console.error(e);
+        $content.innerHTML = `<p class="muted">Could not load Markdown.<br>${e.message}</p>`;
+      }
     }
 
-    (async () => {
-      try {
-        const items = await loadManifest(); // comes from resumes.json
-        const list = document.getElementById("list");
-        const content = document.getElementById("content");
-        const meta = document.getElementById("meta");
-
-        // render sidebar
-        list.innerHTML = items.map(r => `
-          <a class="item" href="#${r.id}" data-md="${r.md}">
-            <div class="title">${r.title}</div>
-            <div class="sub">${r.role}</div>
-          </a>`).join("");
-
-        // lookup table
-        const byId = Object.fromEntries(items.map(r => [r.id, r]));
-
-        async function pick(id) {
-          const r = byId[id] || items[0];
-          meta.textContent = `${r.title} • ${r.role}`;
-          [...list.children].forEach(el =>
-            el.classList.toggle("active", el.getAttribute("href") === "#" + r.id)
-          );
-
-          try {
-            const res = await fetch(r.md, { cache: "no-store" });
-            if (!res.ok) throw new Error(`HTTP ${res.status} ${r.md}`);
-            const md = await res.text();
-            marked.setOptions({ mangle: true, headerIds: true });
-            content.innerHTML = marked.parse(md);
-          } catch (e) {
-            console.error(e);
-            content.innerHTML =
-              `<p class="muted">Could not load Markdown.<br>${e.message}</p>`;
-          }
-        }
-
-        // hook up hash navigation
-        window.addEventListener("hashchange", () =>
-          pick(location.hash.slice(1))
-        );
-
-        // initial load
-        if (location.hash) {
-          pick(location.hash.slice(1));
-        } else if (items.length) {
-          location.hash = "#" + items[0].id;
-        }
-
-      } catch (e) {
-        console.error("Manifest load failed:", e);
-        document.getElementById("content").innerHTML =
-          `<p class="muted">Failed to load manifest.<br>${e.message}</p>`;
-      }
-    })();
-
-    window.addEventListener("hashchange", () => {
-      const id = location.hash.replace("#", "");
-      load(id);
+    // click a tag to filter the sidebar
+    $tags.addEventListener("click", (e) => {
+      const el = e.target.closest(".tag");
+      if (!el) return;
+      const t = el.dataset.tag.toLowerCase();
+      $search.value = t;
+      renderList(t);
     });
 
+    // hash navigation
+    window.addEventListener("hashchange", () => pick(location.hash.slice(1)));
+
+    // search input
     $search.addEventListener("input", e => renderList(e.target.value));
 
-    // Init
-    renderList();
-    if (location.hash) {
-      load(location.hash.replace("#", ""));
-    } else if (RESUMES.length) {
-      location.hash = `#${RESUMES[0].id}`;
-    }
+    // boot
+    (async () => {
+      try {
+        ITEMS = await loadManifest();
+        byId = Object.fromEntries(ITEMS.map(r => [r.id, r]));
+        renderList();
+        if (location.hash) {
+          pick(location.hash.slice(1));
+        } else if (ITEMS.length) {
+          location.hash = `#${ITEMS[0].id}`;
+        }
+      } catch (e) {
+        console.error("Manifest load failed:", e);
+        $content.innerHTML = `<p class="muted">Failed to load manifest.<br>${e.message}</p>`;
+      }
+    })();
   </script>
 </body>
 </html>

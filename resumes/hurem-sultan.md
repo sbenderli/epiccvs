@@ -2,6 +2,7 @@
 title: Hürrem Sultan
 role: Imperial Consort & DEI Champion
 id: hurrem-sultan
+tags: ottoman, 1500s, dei, philanthropy, female
 -->
 
 # Hürrem Sultan  
