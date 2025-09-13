@@ -8,19 +8,19 @@ id: vlad-tepes
 
 ---
 
-## Contact  
+## Contact
 📍 Sighișoara, Transylvania
-📞 Crows, messengers, and terrified envoys  
-📧 [vlad@wallachia.gov.drac]  
+📞 Crows, messengers, and one-way envoys  
+📧 [vlad@wallachia.gov]
 
 ---
 
 ## Notable Achievements  
-- **CEO of Wallachia (1448–1477 intermittent):** Successfully rebranded an entire region as “don’t mess with us” through innovative public relations campaigns involving sharpened stakes.  
-- **Enhanced Interrogation Expert:** Developed methods of questioning that combined maximum pain with maximum audience impact, ensuring rapid compliance.  
-- **Border Security Innovator:** Held off the mighty Ottoman Empire with limited resources by combining guerrilla warfare and psychological operations.  
-- **Efficiency Expert:** Once impaled 20,000 prisoners in a single campaign, streamlining punishment and messaging in one unforgettable KPI.  
-- **Cultural Icon:** Inspired legends of Dracula, ensuring my personal brand would outlast my dynasty, my enemies, and entire empires.  
+- **Voivode of Wallachia (1448–1477 intermittent):** Rebranded an entire country as the medieval world’s most effective “do not disturb” sign, using forests of stakes as marketing collateral.  
+- **Enhanced Interrogation Specialist:** Ran live interrogations where victims produced the answers and audiences fact-checked content in real time.  
+- **Border Security Architect:** Converted Wallachia’s frontiers into a nightmare zone for invading Ottomans through guerrilla tactics, scorched earth retreats, and psy-ops.  
+- **Mass Execution Logistics:** Scaled impalement operations horizontally to 20,000+ units in a single campaign, establishing industry benchmarks for efficiency in PaaS (punishment-as-a-service).
+- **Personal Brand Strategist:** Established “The Impaler” as a household name across Europe, synonymous with fear, authority, and uncompromising leadership.  
 
 ---
 
@@ -43,14 +43,16 @@ id: vlad-tepes
 
 **Royal Hostage, Ottoman Court**  
 *1442–1448*  
-- Acquired cross-cultural skills while serving as an unwilling exchange student in Ottoman foreign policy.  
-- Learned the value of fear as currency.  
+- Completed an immersive “study abroad” program under Sultan Murad II.  
+- Specialized in hostage diplomacy, survival etiquette, and plotting revenge while smiling politely.  
+- Gained insider knowledge of Ottoman politics, which later informed my guerrilla campaigns against them.  
+- Learned the value of fear, leverage, and selective loyalty as alternative currencies.  
 
 ---
 
 ## Education  
 - **House of Drăculești:** Informal training in politics, cruelty, dynastic feuds, and survival through backstabbing (sometimes literal).  
-- **Ottoman Court:** Forcefully participated in Murad II's Exchange program in betrayal. Learned hostage diplomacy, and plotting revenge while smiling politely.  
+- **Ottoman Court Residency:** Exposure to foreign governance, court intrigue, and the practical realities of being “collateral” in international diplomacy.  
 - **Field Studies in “Applied Intimidation”:** Practical coursework in impalement, mass fear campaigns, and shock-value civic engagement.  
 - **Independent Research:** Early adopter of fear as a foreign policy tool; dissertation topic: *“Stakeholder Alignment in Transylvania.”*  
 
@@ -64,5 +66,8 @@ id: vlad-tepes
 ---
 
 ## References  
-- Sultan Mehmed II: “Turned my appetite at dinner into existential dread.”  
-- Hungarian nobles: “We’d prefer not to comment. Please don’t ask again.”  
+- Sultan Mehmed II — knows me well from our many heated professional exchanges on the battlefield.  
+- Murad II — former host family; relationship ended on complicated terms.  
+- Hungarian nobility — long history of collaboration, conflict, and occasional impalement.  
+- Transylvanian Saxons — can attest to my skills in taxation, intimidation, and population management.  
+- Future Gothic novelists — built entire careers off my brand, still waiting on royalty checks.
