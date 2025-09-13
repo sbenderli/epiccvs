@@ -79,6 +79,20 @@
     "md": "./resumes/nicolae-causescu.md"
   },
   {
+    "id": "queen-elizabeth-i",
+    "title": "Queen Elizabeth I",
+    "role": "Queen of England & Ireland",
+    "tags": [
+      "england",
+      "monarchy",
+      "1500s",
+      "1600s",
+      "empire",
+      "queen"
+    ],
+    "md": "./resumes/queen-elizabeth-i.md"
+  },
+  {
     "id": "vlad-tepes",
     "title": "Vlad III “Țepeș” (The Impaler)",
     "role": "Voivode of Terror",
@@ -90,20 +104,5 @@
       "romania"
     ],
     "md": "./resumes/vlad-tepes.md"
-  },
-  {
-    "id": "queen-elizabeth-i",
-    "title": "Queen Elizabeth I",
-    "role": "Queen of England & Ireland",
-    "tags": [
-      "queen",
-      "monarch",
-      "england",
-      "1500s",
-      "1600s",
-      "empire"
-    ],
-    "md": "./resumes/queen-elizabeth-i.md"
   }
-
 ]
