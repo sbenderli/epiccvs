@@ -1,5 +1,5 @@
 # Queen Elizabeth I
-***Long‑Serving Monarch | Imperial Startup Founder | Virgin Branding Strategist**
+**Long-Serving Monarch | Imperial Startup Founder | Virgin Branding Strategist**
 📍 London, England | elizabeth@palace.gov | Court of St James’s
 
 ---
