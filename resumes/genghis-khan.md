@@ -28,6 +28,17 @@ Visionary founder who scaled a nomadic startup into the **largest contiguous emp
 - **Unique market penetration**: Only leader in history to fully conquer Russia, establishing a durable client-state (Golden Horde).  
 - **Exit planning**: Successfully orchestrated own mysterious burial with zero leaks — **data security at scale**.  
 
+**Alliance Builder & Emerging Founder — Independent Operations (c. 1186–1206)**  
+- Secured strategic partnership via marriage to Börte, generating initial seed capital (dowry) and political alliances.  
+- Launched first successful military campaign: rescued Börte from Merkit acquisition with joint-venture forces.  
+- Innovated HR practices by promoting talent based on merit, not aristocracy, disrupting legacy org structures.  
+- Navigated competitive conflict with co-founder Jamukha; survived major attrition event and restructured org for growth.  
+
+**Tribal Survival Specialist — Borjigin Clan (c. 1171–1186)**  
+- Maintained family operations following father’s hostile exit (poisoning).  
+- Adapted to extreme resource constraints, ensuring sibling survival through subsistence hunting and foraging.  
+- Escaped hostile takeover (enslavement by Tayichi’ud), demonstrating resilience and long-term retention.  
+
 ---
 
 ## **Key Metrics**
