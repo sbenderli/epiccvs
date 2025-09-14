@@ -27,6 +27,20 @@
     "md": "./resumes/gavrilo-princip.md"
   },
   {
+    "id": "genghis-khan",
+    "title": "Genghis Khan",
+    "role": "Great Khan of the Mongol Empire",
+    "tags": [
+      "mongolia",
+      "empire",
+      "1100s",
+      "1200s",
+      "conqueror",
+      "genetics"
+    ],
+    "md": "./resumes/genghis-khan.md"
+  },
+  {
     "id": "hurrem-sultan",
     "title": "Hürrem Sultan",
     "role": "Imperial Consort & DEI Champion",

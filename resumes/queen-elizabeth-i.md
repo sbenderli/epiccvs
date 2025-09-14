@@ -8,11 +8,8 @@ tags: england, monarchy, 1500s, 1600s, empire, queen
 # Queen Elizabeth I  
 **Transformational Leader | Crisis Strategist | Global Brand Builder**  
 📍 London, England | elizabeth@palace.gov | Court of St James’s  
-
----
-
-## Statement of Purpose  
-We seek opportunities to apply Our record of surviving hostile environments, neutralizing rivals (formally or otherwise), and expanding influence through ventures others found too risky to attempt. We have delivered stability, growth, and loyalty in climates where failure was typically answered by fire or axe.  
+  
+*We seek opportunities to apply Our record of surviving hostile environments, neutralizing rivals (formally or otherwise), and expanding influence through ventures others found too risky to attempt. We have delivered stability, growth, and loyalty in climates where failure was typically answered by fire or axe.*
 
 ---
 
@@ -52,11 +49,11 @@ We seek opportunities to apply Our record of surviving hostile environments, neu
 ---
 
 ## Selected Achievements  
-- Retained the top role for 44+ years despite >20 succession challenges.  
-- Directed the defeat of Spain’s Armada, reducing competitor fleet by 50%+ while expanding England’s maritime reputation 10x.  
+- Retained the top role for 44+ years despite 20+ succession challenges.  
+- Directed the defeat of Spain’s Armada, reducing competitor fleet by 50%+ while expanding England’s maritime reputation.  
 - Transformed personal chastity into a state brand, neutralizing 100% of suitors while consolidating internal authority.  
 - Initiated England’s addiction to global trade monopolies, generating sustained returns for over 200 years.  
-- Oversaw an era so distinctive it bears Our name — brand awareness still at 95%+ centuries post-tenure.  
+- Oversaw an era so distinctive it bears Our name — brand awareness still at 95%+ centuries post-tenure.
 
 ---
 
