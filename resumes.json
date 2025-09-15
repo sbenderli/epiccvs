@@ -120,6 +120,22 @@
     "md": "./resumes/queen-elizabeth-i.md"
   },
   {
+    "id": "suleiman-the-magnificent",
+    "title": "Suleiman the Magnificent",
+    "role": "Sultan of the Ottoman Empire",
+    "tags": [
+      "ottoman",
+      "empire",
+      "1500s",
+      "sultan",
+      "caliph",
+      "conqueror",
+      "poet",
+      "reformer"
+    ],
+    "md": "./resumes/suleiman-the-magnificient.md"
+  },
+  {
     "id": "vlad-tepes",
     "title": "Vlad III “Țepeș” (The Impaler)",
     "role": "Voivode of Terror",
