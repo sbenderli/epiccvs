@@ -1,5 +1,19 @@
 [
   {
+    "id": "alexander-the-great",
+    "title": "Alexander the Great",
+    "role": "Undefeated General",
+    "tags": [
+      "macedonia",
+      "empire",
+      "300s-bce",
+      "conqueror",
+      "ceo",
+      "expansion"
+    ],
+    "md": "./resumes/alexander-the-great.md"
+  },
+  {
     "id": "marcus-brutus",
     "title": "Marcus Junius Brutus",
     "role": "Senator & Assassin",
@@ -35,8 +49,7 @@
       "empire",
       "1100s",
       "1200s",
-      "conqueror",
-      "genetics"
+      "conqueror"
     ],
     "md": "./resumes/genghis-khan.md"
   },
