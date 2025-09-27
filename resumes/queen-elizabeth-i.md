@@ -14,8 +14,8 @@ tags: england, monarchy, 1500s, 1600s, empire, queen
 ---
 
 ## Executive Summary  
-- Led a divided organization for 45 years, steering it through religious and political upheaval while retaining executive control — even as turnover in the opposition remained… brisk.  
-- Authorized international ventures, pioneering risk-to-reward ratios that cost other people their lives but cemented Our legacy, driving a 300% increase in overseas claims.  wwwwwwwww
+- Led a divided organization for 45 years, steering it through religious and political upheaval while retaining executive control.
+- Authorized international ventures, pioneering risk-to-reward ratios that cost other people their lives but cemented Our legacy, driving a 300% increase in overseas claims.
 - Executed one of history’s most decisive defensive campaigns (the Armada), cutting competitor naval capacity by more than 50% in a single quarter.  
 - Implemented a unifying organizational culture (“the Settlement”), reframing theology as compliance policy with measurable KPIs: loyalty, obedience, and reduced rebellion, driving alignment across millions of stakeholders.  
 - Cultivated the Virgin Queen brand, achieving 100% retention of executive authority while eliminating succession risk entirely.  

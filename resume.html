@@ -270,6 +270,9 @@
             border-color: var(--accent);
             color: var(--ink)
         }
+        /* Tags: chip styling similar to all.html */
+        .tags{margin:8px 0 12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+        .tag{padding:6px 10px;background:rgba(255,255,255,0.02);color:var(--muted);font-size:13px;border-radius:999px;display:inline-block;line-height:1;white-space:nowrap}
     </style>
 </head>
 
@@ -289,6 +292,7 @@
         <header>
             <h1 class="title" id="title">Loading…</h1>
             <p class="subtitle" id="subtitle"></p>
+            <div id="tags" class="tags" aria-label="Tags"></div>
         </header>
 
         <div class="layout">
@@ -450,6 +454,24 @@
                 } catch (e) {
                     console.error('Exception while populating thumbnail', e);
                 }
+
+                // Populate tags: prefer front-matter meta.tags (comma-separated) then entry.tags (array)
+                try {
+                    const tagsEl = document.getElementById('tags');
+                    let tags = [];
+                    if (meta && meta.tags) {
+                        // allow comma-separated or space-separated lists in front-matter
+                        tags = meta.tags.split(/\s*,\s*|\s+/).filter(Boolean);
+                    } else if (entry && Array.isArray(entry.tags)) {
+                        tags = entry.tags.slice();
+                    }
+                    if (tags.length) {
+                        tagsEl.innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+                        tagsEl.style.display = 'flex';
+                    } else {
+                        tagsEl.style.display = 'none';
+                    }
+                } catch (e) { console.error('Exception while populating tags', e); }
 
                 // If no meta.title, mirror first H1 as page title
                 if (!meta.title) {

@@ -1,128 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Epic CVs</title>
-  <meta name="description" content="Historical figures reimagined as modern resumes." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <title>All Resumes — Epic CVs</title>
+  <meta name="description" content="Browse all resumes on Epic CVs" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9094816729178059"
-    crossorigin="anonymous"></script>
+     crossorigin="anonymous"></script>
   <style>
-    :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --ink: #e5e7eb;
-      --muted: #94a3b8;
-      --accent: #60a5fa;
-      --border: #1f2937;
-    }
-    * { box-sizing: border-box }
-    html, body { height: 100% }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg); color: var(--ink)
-    }
-    a { color: var(--ink); text-decoration: none }
-    a:hover { color: var(--accent) }
-    .container { max-width: 1100px; margin: 0 auto; padding: 16px }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0 }
-    .nav .left { display: flex; gap: 16px; align-items: center }
-    .brand { font-weight: 700 }
-    .nav a { color: var(--muted) }
-    .nav a.active, .nav a:hover { color: var(--ink) }
-    .ad-top, .ad-bottom {
-      width: 100%; min-height: 90px; background: #0b1222;
-      border: 1px dashed var(--border); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; margin: 12px 0
-    }
-    .ad-label { font-size: 12px; color: var(--muted) }
-    .hero { padding: 8px 0 4px }
-    .hero h1 { font-size: 28px; margin: 8px 0 4px }
-    .hero p { margin: 0; color: var(--muted) }
-    .grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px
-    }
-    @media (max-width:900px){ .grid { grid-template-columns: repeat(2,1fr) } }
-    @media (max-width:600px){ .grid { grid-template-columns: 1fr } }
-    .card {
-      background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
-      overflow: hidden; display: flex; flex-direction: column
-    }
-    .thumb {
-      aspect-ratio: 4/3; background: #0b1222; border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: 14px; overflow: hidden
-    }
-    .thumb img { width:100%; height:100%; object-fit:cover; display:block }
-    .card h3 { font-size: 18px; margin: 12px 12px 4px }
-    .card p { font-size: 14px; color: var(--muted); margin: 0 12px 12px }
-    .footer { padding: 24px 0; color: var(--muted); font-size: 14px }
-    .random { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted) }
-    .random:hover { border-color: var(--accent); color: var(--ink) }
+    :root { --bg:#0f172a; --panel:#111827; --ink:#e5e7eb; --muted:#94a3b8; --accent:#60a5fa; --border:#1f2937 }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    a{color:var(--ink);text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:16px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .nav .left{display:flex;gap:16px;align-items:center}
+    .brand{font-weight:700}
+  .search-box{margin:12px 0 20px;display:flex;gap:8px}
+  .search-input{flex:1;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--panel);color:var(--ink);font-size:15px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.grid{grid-template-columns:1fr}}
+  /* larger, vertical cards (image on top) */
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+  .card .thumb{width:100%;height:180px;background:#0b1222;display:block}
+  .card .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .card h3{font-size:18px;margin:12px}
+  .card p{margin:0 12px 12px;color:var(--muted)}
+  /* Tag container and per-tag chips */
+  .card .tags{
+    margin:0 12px 12px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .card .tag{
+    padding:6px 10px;
+    background: rgba(255,255,255,0.02);
+    color:var(--muted);
+    font-size:13px;
+    border-radius:999px;
+    display:inline-block;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .random { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); background: transparent; }
+  .random:hover { border-color: var(--accent); color: var(--ink); }
   </style>
 </head>
+
 <body>
   <div class="container">
     <nav class="nav">
       <div class="left">
         <a class="brand" href="/">Epic CVs</a>
-        <a class="active" href="/">Home</a>
+        <a href="/">Home</a>
         <a href="/about.html">About</a>
       </div>
       <a class="random" href="#" id="randomBtn">Random CV</a>
     </nav>
 
-    <div class="ad-top"><span class="ad-label">Top banner ad</span></div>
-
-    <header class="hero">
-      <h1>Historical figures, modern resumes</h1>
-      <p>Browse the collection below. New CVs weekly.</p>
+    <header style="margin-top:12px">
+      <h1 style="margin:0 0 6px">Historical figures, modern resumes</h1>
+      <p style="margin:0 0 12px;color:var(--muted)">Browse the collection below. New CVs weekly.</p>
     </header>
 
-    <section class="grid" id="cards"></section>
+    <div class="search-box">
+      <input id="q" class="search-input" placeholder="Search resumes" aria-label="Search resumes">
+    </div>
 
-    <div class="ad-bottom"><span class="ad-label">Bottom banner ad</span></div>
+    <section id="list" class="grid"></section>
 
-    <footer class="footer">© <span id="year"></span> Epic CVs</footer>
+    <footer style="margin-top:18px;color:var(--muted)">© <span id="year"></span> Epic CVs</footer>
   </div>
 
   <script>
     async function loadResumes(){
-      const res = await fetch('./resumes.json');
-      if(!res.ok) return [];
-      return await res.json();
+      try{
+        const r = await fetch('./resumes.json', {cache:'no-store'});
+        if(!r.ok) return [];
+        return await r.json();
+      }catch(e){console.error('Failed to load resumes.json',e);return[]}
     }
 
-    (async () => {
-      const resumes = await loadResumes();
-      const cards = document.getElementById('cards');
-      if(!resumes.length){
-        cards.innerHTML = '<p>Could not load resumes.json</p>';
-        return;
-      }
-      // Pick 3 random resumes
-      const picks = resumes.sort(() => 0.5 - Math.random()).slice(0, 3);
-      cards.innerHTML = picks.map(r => `
-        <a class="card" href="/resume.html?id=${r.id}">
-          <div class="thumb">
-            <img src="${r.thumb}" alt="${r.title}">
-          </div>
-          <h3>${r.title}</h3>
-          <p>${r.role || ''}</p>
-        </a>
-      `).join('');
+    function renderList(items){
+      const list = document.getElementById('list');
+        list.innerHTML = items.map(i=>{
+          const tags = (i.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+          return `<a class="card" href="/resume.html?id=${encodeURIComponent(i.id)}">
+            <div class="thumb">${i.thumb?`<img src="${i.thumb}" alt="${i.title||i.id}" loading="lazy" onerror="this.style.display='none'">`:''}</div>
+            <h3>${i.title||i.id}</h3>
+            <p class="role">${i.role||''}</p>
+            <div class="tags">${tags}</div>
+          </a>`
+        }).join('');
+    }
 
-      document.getElementById('randomBtn').addEventListener('click', e => {
-        e.preventDefault();
-        const pick = resumes[Math.floor(Math.random() * resumes.length)];
-        window.location.href = `/resume.html?id=${pick.id}`;
+    (async()=>{
+      const resumes = await loadResumes();
+  const input = document.getElementById('q');
+  const clear = document.getElementById('clear');
+  const randomBtn = document.getElementById('randomBtn');
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+      renderList(resumes);
+
+      function normalize(s){ return (s||'').toString().toLowerCase(); }
+      function matches(item, term){
+        const t = normalize(term);
+        if(!t) return true;
+        if(normalize(item.title).includes(t)) return true;
+        if(normalize(item.role).includes(t)) return true;
+        if(normalize(item.id).includes(t)) return true;
+        if(Array.isArray(item.tags) && item.tags.join(' ').toLowerCase().includes(t)) return true;
+        return false;
+      }
+
+      input.addEventListener('input', ()=>{
+        const q = input.value.trim();
+        const filtered = resumes.filter(r=>matches(r,q));
+        renderList(filtered);
       });
-      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // If the old inline "I'm feeling unlucky" button was removed, skip attaching its handler.
+      if (clear) {
+        clear.addEventListener('click', ()=>{
+          // I'm feeling unlucky -> go to a random resume
+          if (!resumes || !resumes.length) return;
+          const pick = resumes[Math.floor(Math.random() * resumes.length)];
+          if (pick) window.location.href = `/resume.html?id=${encodeURIComponent(pick.id)}`;
+        });
+      }
+
+      // Random CV (nav button) — guard against missing element or empty resumes.
+      if (randomBtn) {
+        randomBtn.addEventListener('click', e => {
+          e.preventDefault();
+          if (!resumes || !resumes.length) return;
+          const pick = resumes[Math.floor(Math.random() * resumes.length)];
+          if (pick) window.location.href = `/resume.html?id=${encodeURIComponent(pick.id)}`;
+        });
+      }
     })();
   </script>
 </body>
+
 </html>
