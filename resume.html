@@ -231,6 +231,26 @@
             padding: 12px
         }
 
+        /* related-card thumbnail */
+        .rel-card {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .rel-card .rel-thumb {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            flex: 0 0 56px;
+        }
+
+        .rel-card .rel-meta {
+            display: block;
+        }
+
         .footer {
             padding: 24px 0;
             color: var(--muted);
@@ -439,12 +459,15 @@
             // Related (3 others) using id in the link
             const others = resumes.filter(r => r.id !== entry.id);
             const picks = others.sort(() => 0.5 - Math.random()).slice(0, 3);
-            document.getElementById('related').innerHTML = picks.map(p => `
-      <a class="rel-card" href="/resume.html?id=${encodeURIComponent(p.id)}">
-        <strong>${p.title || p.id}</strong><br>
-        <span style="color:var(--muted)">${p.role || ''}</span>
-      </a>
-    `).join('');
+                                    document.getElementById('related').innerHTML = picks.map(p => `
+                        <a class="rel-card" href="/resume.html?id=${encodeURIComponent(p.id)}">
+                            ${p.thumb ? `<img class="rel-thumb" src="${p.thumb}" loading="lazy" onerror="this.style.display='none'" alt="${(p.title||p.id)} thumbnail">` : ''}
+                            <span class="rel-meta">
+                                <strong>${p.title || p.id}</strong><br>
+                                <span style="color:var(--muted)">${p.role || ''}</span>
+                            </span>
+                        </a>
+                    `).join('');
 
             // Random CV
             document.getElementById('randomBtn').addEventListener('click', e => {
