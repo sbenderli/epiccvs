@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — Epic CVs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --ink: #e5e7eb;
+            --muted: #94a3b8;
+            --accent: #60a5fa;
+            --border: #1f2937;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        a {
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        a:hover {
+            color: var(--accent)
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 16px
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0
+        }
+
+        .nav .left {
+            display: flex;
+            gap: 16px;
+            align-items: center
+        }
+
+        .brand {
+            font-weight: 700
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px
+        }
+
+        .ad-top,
+        .ad-bottom {
+            width: 100%;
+            min-height: 90px;
+            background: #0b1222;
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 12px 0
+        }
+
+        .ad-label {
+            font-size: 12px;
+            color: var(--muted)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="left">
+                <a class="brand" href="/">Epic CVs</a>
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+            </div>
+        </nav>
+
+
+        <div class="ad-top"><span class="ad-label">Top banner ad</span></div>
+
+
+        <article class="panel">
+            <h1>About</h1>
+            <p>Epic CVs is a tiny, lovingly crafted gallery that asks a simple question: what would history’s biggest
+                names look like on a modern resume?</p>
+            <p>We keep the pages clean so the resumes can shine. Ads are placed around the content, not inside it.</p>
+            <p>We donate site ad revenue after covering server costs. From time to time we’ll post receipts on a
+                transparency page.</p>
+        </article>
+
+
+        <div class="ad-bottom"><span class="ad-label">Bottom banner ad</span></div>
+    </div>
+</body>
+
+</html>

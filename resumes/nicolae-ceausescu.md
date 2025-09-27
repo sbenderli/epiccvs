@@ -1,7 +1,7 @@
 <!-- 
 title: Nicolae Ceaușescu
 role: Dictator
-id: nicolae-causescu
+id: nicolae-ceausescu
 tags: romania, communism, 1900s, dictator, cold-war
 -->
 # Nicolae Ceaușescu  
@@ -18,7 +18,7 @@ tags: romania, communism, 1900s, dictator, cold-war
 
 ## Notable Achievements  
 - **CEO of Romania, Inc. (1965–1989):** Oversaw vertical integration of state, party, and self into one seamless dictatorship.  
-- **Brand Management Expert:** Cultivated one of history’s most aggressive personality cults, ensuring every bookshelf, classroom, and TV broadcast featured me and my wife Elena.  
+- **Brand Management Expert:** Cultivated one of history’s most aggressive personality cults, ensuring every bookshelf, classroom, and TV broad`ca`st featured me and my wife Elena.  
 - **International Networking:** Said “nyet” to Moscow in 1968, gaining applause from the West while still running a Stalinist playbook at home.  
 - **Debt Elimination:** Paid off Romania’s entire foreign debt by starving my citizens of food, heat, and electricity — fiscal responsibility meets human misery.  
 - **Urban Renewal Visionary:** Flattened historic neighborhoods to construct the Palace of the Parliament, one of the heaviest buildings in the world, proving gravity itself couldn’t ignore my projects.  

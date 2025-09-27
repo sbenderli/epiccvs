@@ -51,7 +51,8 @@ for name in sorted(os.listdir(res_dir)):
         "title": title,
         "role": role,
         "tags": tags,
-        "md": f"./resumes/{name}"
+        "md": f"./resumes/{name}",
+        "thumb": f"./thumbs/{os.path.splitext(name)[0]}.jpg"
     })
 
 out = os.path.join(root, "resumes.json")

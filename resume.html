@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title id="pagetitle">Epic CV</title>
+    <meta name="description" content="A historical resume from Epic CVs." />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Match your previous renderer behavior
+        if (window.marked) {
+            try {
+                marked.setOptions({
+                    gfm: true,          // GitHub-flavored markdown
+                    breaks: false,      // keep paragraphs; use two spaces + newline for <br>
+                    mangle: false,      // don't obfuscate emails like [name@example.com]
+                    headerIds: true,    // stable heading ids
+                    smartypants: true   // “smart quotes”, dashes, ellipses
+                });
+            } catch (e) { }
+        }
+    </script>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --ink: #e5e7eb;
+            --muted: #94a3b8;
+            --accent: #60a5fa;
+            --border: #1f2937;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        a {
+            color: var(--ink);
+            text-decoration: none
+        }
+
+        a:hover {
+            color: var(--accent)
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0
+        }
+
+        .nav .left {
+            display: flex;
+            gap: 16px;
+            align-items: center
+        }
+
+        .brand {
+            font-weight: 700
+        }
+
+        .nav a {
+            color: var(--muted)
+        }
+
+        .nav a.active,
+        .nav a:hover {
+            color: var(--ink)
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 16px
+        }
+
+        @media (max-width:1000px) {
+            .layout {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .ad-top,
+        .ad-bottom,
+        .ad-side {
+            background: #0b1222;
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .ad-top,
+        .ad-bottom {
+            width: 100%;
+            min-height: 90px;
+            margin: 12px 0
+        }
+
+        .ad-side {
+            min-height: 250px;
+            position: sticky;
+            top: 16px
+        }
+
+        .ad-label {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .title {
+            margin: 6px 0 2px;
+            font-size: 28px
+        }
+
+        .subtitle {
+            margin: 0 0 12px;
+            color: var(--muted)
+        }
+
+        .paper {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px
+        }
+
+        .paper img {
+            max-width: 100%;
+            border-radius: 10px
+        }
+
+        /* thumbnail in the sidebar */
+        .thumb-box {
+            margin-bottom: 12px;
+        }
+
+        .thumb-box .thumb {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            border: 1px solid var(--border);
+        }
+
+        .paper h1,
+        .paper h2,
+        .paper h3 {
+            margin-top: 20px
+        }
+
+        .paper p {
+            line-height: 1.7
+        }
+
+        .paper ul {
+            padding-left: 22px
+        }
+
+        .paper li {
+            margin: 6px 0
+        }
+
+        .paper code,
+        .paper pre {
+            background: #0b1222;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2px 6px
+        }
+
+        .paper pre {
+            padding: 10px;
+            overflow: auto
+        }
+
+        .related {
+            margin-top: 20px
+        }
+
+        .related h3 {
+            margin: 6px 0 12px
+        }
+
+        .rel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px
+        }
+
+        @media (max-width:800px) {
+            .rel-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media (max-width:520px) {
+            .rel-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .rel-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px
+        }
+
+        .footer {
+            padding: 24px 0;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .random {
+            padding: 6px 10px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--muted)
+        }
+
+        .random:hover {
+            border-color: var(--accent);
+            color: var(--ink)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="left">
+                <a class="brand" href="/">Epic CVs</a>
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+            </div>
+            <a class="random" href="#" id="randomBtn">Random CV</a>
+        </nav>
+
+        <div class="ad-top"><span class="ad-label">Top banner ad</span></div>
+
+        <header>
+            <h1 class="title" id="title">Loading…</h1>
+            <p class="subtitle" id="subtitle"></p>
+        </header>
+
+        <div class="layout">
+            <main>
+                <article class="paper" id="md" aria-label="Resume content"></article>
+
+                <section class="related">
+                    <h3>See also</h3>
+                    <div class="rel-grid" id="related"></div>
+                </section>
+
+                <div class="ad-bottom"><span class="ad-label">Bottom banner ad</span></div>
+            </main>
+
+            <aside>
+                <div class="thumb-box" id="thumbBox" style="display:none">
+                    <img id="thumbImg" class="thumb" alt="Thumbnail">
+                </div>
+                <div class="ad-side"><span class="ad-label">Right sidebar ad</span></div>
+            </aside>
+        </div>
+
+        <footer class="footer">© <span id="year"></span> Epic CVs</footer>
+    </div>
+
+    <script>
+        // ---------- helpers ----------
+        function configureMarked() {
+            if (window.marked) {
+                try {
+                    marked.setOptions({
+                        gfm: true,
+                        breaks: false,
+                        mangle: false,      // keep emails readable
+                        headerIds: true,
+                        smartypants: true
+                    });
+                } catch (e) { }
+            }
+        }
+
+        async function loadResumes() {
+            // relative path first works for subpaths (e.g., GitHub Pages)
+            const r = await fetch('./resumes.json', { cache: 'no-store' });
+            if (!r.ok) return [];
+            const data = await r.json();
+            return Array.isArray(data) ? data : [];
+        }
+
+        function pickEntry(items, want) {
+            if (!want) return items[0];
+            // prefer id, but accept slug for backward compatibility
+            return items.find(x => x.id === want || x.slug === want) || items[0];
+        }
+
+        function parseFrontMatter(md) {
+            // Match an HTML comment at the start of the file: <!-- key: value\n ... -->
+            const m = md.match(/^<!--([\s\S]*?)-->/);
+            const meta = {};
+            if (m) {
+                for (const line of m[1].split(/\r?\n/)) {
+                    const mm = line.match(/^\s*([A-Za-z0-9_-]+)\s*:\s*(.+)\s*$/);
+                    if (mm) meta[mm[1].trim().toLowerCase()] = mm[2].trim();
+                }
+            }
+            return meta;
+        }
+
+        configureMarked();
+
+        // ---------- main ----------
+        (async () => {
+            const resumes = await loadResumes();
+            console.debug('loadResumes -> count', Array.isArray(resumes) ? resumes.length : typeof resumes);
+            if (!resumes.length) {
+                document.getElementById('md').innerHTML = '<p>Could not load <code>resumes.json</code>.</p>';
+                return;
+            }
+
+            const params = new URLSearchParams(location.search);
+            const want = params.get('id') || params.get('slug'); // support both ?id= and ?slug=
+            const entry = pickEntry(resumes, want);
+            console.debug('Selected entry', { want, id: entry && entry.id, title: entry && entry.title });
+
+            // Header
+            const pageTitle = entry.title || entry.id || 'Resume';
+            const pageSub = entry.role || '';
+            document.getElementById('title').textContent = pageTitle;
+            document.getElementById('subtitle').textContent = pageSub;
+            document.getElementById('pagetitle').textContent = `${pageTitle} — Epic CVs`;
+
+            // Load markdown from the path specified in resumes.json
+            let mdText = '';
+            try {
+                // Prefer the explicit md field; fall back to ./resumes/<id>.md just in case
+                const mdPathCandidates = [entry.md, `./resumes/${entry.id}.md`].filter(Boolean);
+                for (const p of mdPathCandidates) {
+                    try {
+                        console.debug('Fetching markdown candidate', p);
+                        const r = await fetch(p, { cache: 'no-store' });
+                        if (r.ok) { mdText = await r.text(); console.debug('Fetched markdown ok', p, 'length', mdText.length); break; }
+                        else console.warn('Markdown fetch returned non-ok', p, r.status, r.statusText);
+                    } catch (err) {
+                        console.error('Error fetching markdown', p, err);
+                    }
+                }
+            } catch (_) { }
+
+            if (!mdText) {
+                const triedPath = entry.md || `./resumes/${entry.id}.md`;
+                document.getElementById('md').innerHTML =
+                    `<p>Content missing: <code>${triedPath}</code></p>`;
+            } else {
+                // Strip optional HTML-comment front matter if present
+                const meta = parseFrontMatter(mdText);
+                console.debug('Parsed front-matter', meta);
+                const body = mdText.replace(/^<!--[\s\S]*?-->\s*/, '');
+                console.debug('Body length after stripping front-matter', body.length);
+
+                if (meta.title) {
+                    document.getElementById('title').textContent = meta.title;
+                    document.getElementById('pagetitle').textContent = `${meta.title} — Epic CVs`;
+                }
+                if (meta.role) {
+                    document.getElementById('subtitle').textContent = meta.role;
+                }
+
+                // Render markdown (ads remain outside)
+                const html = window.marked ? marked.parse(body) : body;
+                document.getElementById('md').innerHTML = html;
+
+                // Populate thumbnail from front-matter meta or the resumes.json entry
+                try {
+                    const thumbEl = document.getElementById('thumbImg');
+                    const thumbBox = document.getElementById('thumbBox');
+                    if (!thumbEl || !thumbBox) {
+                        console.warn('Thumbnail elements missing in DOM', { thumbEl: !!thumbEl, thumbBox: !!thumbBox });
+                    } else {
+                        const thumb = (meta && meta.thumb) || (entry && entry.thumb) || '';
+                        if (!thumb) {
+                            // Log when no thumbnail source is available for diagnostics
+                            console.warn('No thumbnail configured for resume', { id: entry && entry.id, title: entry && entry.title, meta });
+                            thumbBox.style.display = 'none';
+                        } else {
+                            // Attach handlers so network/load failures are visible in the console
+                            thumbEl.onload = () => console.debug('Thumbnail loaded', { src: thumb, id: entry && entry.id });
+                            thumbEl.onerror = (ev) => {
+                                console.error('Failed to load thumbnail', { src: thumb, id: entry && entry.id, event: ev });
+                                // hide the box if the image can't be displayed
+                                try { thumbBox.style.display = 'none'; } catch (_) { }
+                            };
+                            // Set attributes and show the box
+                            thumbEl.alt = meta.title || entry.title || 'Thumbnail';
+                            // Use the raw path from data; the browser must be able to fetch it
+                            thumbEl.src = thumb;
+                            thumbBox.style.display = 'block';
+                        }
+                    }
+                } catch (e) {
+                    console.error('Exception while populating thumbnail', e);
+                }
+
+                // If no meta.title, mirror first H1 as page title
+                if (!meta.title) {
+                    const h1 = document.querySelector('#md h1');
+                    if (h1) document.getElementById('title').textContent = h1.textContent.replace(/^#\s*/, '');
+                }
+            }
+
+            // Related (3 others) using id in the link
+            const others = resumes.filter(r => r.id !== entry.id);
+            const picks = others.sort(() => 0.5 - Math.random()).slice(0, 3);
+            document.getElementById('related').innerHTML = picks.map(p => `
+      <a class="rel-card" href="/resume.html?id=${encodeURIComponent(p.id)}">
+        <strong>${p.title || p.id}</strong><br>
+        <span style="color:var(--muted)">${p.role || ''}</span>
+      </a>
+    `).join('');
+
+            // Random CV
+            document.getElementById('randomBtn').addEventListener('click', e => {
+                e.preventDefault();
+                const pick = resumes[Math.floor(Math.random() * resumes.length)];
+                window.location.href = `/resume.html?id=${encodeURIComponent(pick.id)}`;
+            });
+
+            document.getElementById('year').textContent = new Date().getFullYear();
+        })();
+    </script>
+
+</body>
+
+</html>
