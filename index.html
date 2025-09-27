@@ -49,6 +49,13 @@
   }
   .random { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); background: transparent; }
   .random:hover { border-color: var(--accent); color: var(--ink); }
+  /* right-side desktop sticky ad */
+  .ad-side{display:none}
+  @media(min-width:1000px){
+    .ad-side{display:block;position:fixed;right:16px;top:120px;width:300px;z-index:30}
+    /* prevent the fixed ad from covering very wide content */
+    .container{max-width:1040px}
+  }
   </style>
 </head>
 
@@ -68,11 +75,44 @@
       <p style="margin:0 0 12px;color:var(--muted)">Browse the collection below. New CVs weekly.</p>
     </header>
 
+    <div class="ad-top">
+      <!-- Manual AdSense top banner for homepage: set data-ad-slot to your ad unit id -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9094816729178059"
+           data-ad-slot=""
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Desktop sticky right-side ad (manual) -->
+    <div class="ad-side">
+      <!-- Manual AdSense sidebar ad for homepage: set data-ad-slot to your ad unit id -->
+      <ins class="adsbygoogle"
+           style="display:block;width:300px;height:250px"
+           data-ad-client="ca-pub-9094816729178059"
+           data-ad-slot=""
+           data-ad-format="auto"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
     <div class="search-box">
       <input id="q" class="search-input" placeholder="Search resumes" aria-label="Search resumes">
     </div>
 
     <section id="list" class="grid"></section>
+
+    <div class="ad-bottom">
+      <!-- Manual AdSense bottom banner for homepage: set data-ad-slot to your ad unit id -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9094816729178059"
+           data-ad-slot=""
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
     <footer style="margin-top:18px;color:var(--muted)">© <span id="year"></span> Epic CVs</footer>
   </div>
@@ -145,7 +185,27 @@
         });
       }
     })();
+
+    // Hide ad containers if no ad iframe is inserted (useful when viewing locally or before slots are configured)
+    (function hideEmptyAds(){
+      function checkOnce(){
+        document.querySelectorAll('.ad-top,.ad-bottom,.ad-side').forEach(c=>{
+          const ins = c.querySelector('ins.adsbygoogle');
+          if(!ins){ c.style.display = 'none'; return; }
+          if(ins.querySelector('iframe')){ c.style.display = ''; }
+          else { c.style.display = 'none'; }
+          const mo = new MutationObserver((mutations)=>{
+            if(ins.querySelector('iframe')){ c.style.display = ''; mo.disconnect(); }
+          });
+          mo.observe(ins, { childList: true, subtree: true });
+        });
+      }
+      if (document.readyState === 'complete' || document.readyState === 'interactive') checkOnce();
+      else document.addEventListener('DOMContentLoaded', checkOnce);
+      setTimeout(checkOnce, 1500);
+    })();
   </script>
+
 </body>
 
 </html>
