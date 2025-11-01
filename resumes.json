@@ -58,6 +58,21 @@
     "thumb": "./thumbs/genghis-khan.jpg"
   },
   {
+    "id": "hammurabi",
+    "title": "Hammurabi",
+    "role": "King of Babylon",
+    "tags": [
+      "babylon",
+      "lawgiver",
+      "1700s-bce",
+      "code",
+      "justice",
+      "empire"
+    ],
+    "md": "./resumes/hammurabi.md",
+    "thumb": "./thumbs/hammurabi.jpg"
+  },
+  {
     "id": "hurrem-sultan",
     "title": "Hürrem Sultan",
     "role": "Imperial Consort & DEI Champion",
