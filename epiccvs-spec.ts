@@ -39,14 +39,15 @@ export const cardsAlwaysLinkToResumes = always(() => allCardsHaveValidLinks.curr
 
 // --- Search behavior ---
 
-// Extract words from currently visible cards for use as search keywords
+// Extract words from currently visible cards for use as search keywords.
+// Uses innerText (not textContent) so adjacent elements get proper spacing.
 const pageWords = extract((state) => {
   const cards = state.document.querySelectorAll("#list .card");
   const words: string[] = [];
   for (const card of Array.from(cards)) {
-    const text = card.textContent ?? "";
+    const text = (card as HTMLElement).innerText ?? "";
     for (const word of text.split(/\s+/)) {
-      const clean = word.replace(/[^a-zA-Z0-9]/g, "");
+      const clean = word.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
       if (clean.length >= 4) words.push(clean);
     }
   }
@@ -75,9 +76,12 @@ const focusSearch = actions(() => {
   return [{ Click: { name: "INPUT", content: "Search resumes", point } } as Action];
 });
 
-// When the search input is focused, type a word from the page
+// When the search input is focused and empty, type a word from the page.
+// Only types into an empty box to avoid accumulating gibberish.
 const searchWithKeywords = actions(() => {
   if (!isSearchFocused.current) return [];
+  const s = searchState.current;
+  if (s && s.searchValue) return []; // already has text, don't accumulate
   const words = pageWords.current;
   if (words.length === 0) return [];
   return words.map(
@@ -105,10 +109,11 @@ const searchState = extract((state) => {
   return { searchValue, cardCount };
 });
 
-// Capture text content of all cards (used at initial load to know what searches should match)
+// Capture visible text of all cards (used at initial load to know what searches should match).
+// Uses innerText so element boundaries produce spaces, matching what users actually see.
 const allCardTexts = extract((state) => {
   const cards = state.document.querySelectorAll("#list .card");
-  return Array.from(cards).map((card) => (card.textContent ?? "").toLowerCase());
+  return Array.from(cards).map((card) => ((card as HTMLElement).innerText ?? "").toLowerCase());
 });
 
 // P5: Home page shows cards when search is empty
