@@ -156,3 +156,29 @@ export const resumePageShowsContent = always(() => {
   if (resumePageState.current.title === "Loading…") return true; // still loading, not a violation yet
   return resumePageState.current.hasContent;
 });
+
+// Extract "See also" links on resume pages
+const seeAlsoState = extract((state) => {
+  const related = state.document.querySelector("#related");
+  if (!related) return null;
+  const currentId = new URLSearchParams(state.window.location.search).get("id") ?? "";
+  const relCardIds = Array.from(related.querySelectorAll(".rel-card"))
+    .map((card) => {
+      const href = card.getAttribute("href") ?? "";
+      try {
+        return new URLSearchParams(new URL(href, state.window.location.origin).search).get("id");
+      } catch {
+        return null;
+      }
+    })
+    .filter(Boolean);
+  return { currentId, relCardIds };
+});
+
+// P8: "See also" never links to the current resume
+export const seeAlsoExcludesCurrentResume = always(() => {
+  if (!seeAlsoState.current) return true;
+  const { currentId, relCardIds } = seeAlsoState.current;
+  if (!currentId || relCardIds.length === 0) return true;
+  return !relCardIds.includes(currentId);
+});

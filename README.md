@@ -45,6 +45,9 @@ If the search term matches any resume's title, role, or tags, at least one card 
 #### P7: Resume page always displays content
 When viewing a resume, the page must display a title and rendered content. The article area must not be empty after loading completes.
 
+#### P8: "See also" never links to the current resume
+The related resumes section at the bottom of a resume page must not include the resume currently being viewed.
+
 ## Testing
 
 Properties are verified with [Bombadil](https://github.com/antithesishq/bombadil), a property-based testing framework for web UIs. Bombadil autonomously explores the site — clicking links, navigating pages, typing in the search box — while checking that all properties hold in every reachable state. The test specification is in `epiccvs-spec.ts`.
