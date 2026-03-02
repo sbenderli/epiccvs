@@ -48,6 +48,9 @@ When viewing a resume, the page must display a title and rendered content. The a
 #### P8: "See also" never links to the current resume
 The related resumes section at the bottom of a resume page must not include the resume currently being viewed.
 
+#### P9: No duplicate cards on the home page
+Every card in the grid must be unique. No resume should appear more than once.
+
 ## Testing
 
 Properties are verified with [Bombadil](https://github.com/antithesishq/bombadil), a property-based testing framework for web UIs. Bombadil autonomously explores the site — clicking links, navigating pages, typing in the search box — while checking that all properties hold in every reachable state. The test specification is in `epiccvs-spec.ts`.

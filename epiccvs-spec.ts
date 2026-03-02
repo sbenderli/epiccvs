@@ -182,3 +182,17 @@ export const seeAlsoExcludesCurrentResume = always(() => {
   if (!currentId || relCardIds.length === 0) return true;
   return !relCardIds.includes(currentId);
 });
+
+
+// Extract card hrefs on home page
+const cardHrefs = extract((state) => {
+  const cards = state.document.querySelectorAll("#list .card");
+  if (cards.length === 0) return null;
+  return Array.from(cards).map((card) => card.getAttribute("href") ?? "");
+});
+
+// P9: No duplicate cards on the home page
+export const noDuplicateCards = always(() => {
+  if (!cardHrefs.current) return true; // not on home page or no cards
+  return cardHrefs.current.length === new Set(cardHrefs.current).size;
+});
