@@ -120,6 +120,7 @@ export const emptySearchShowsCards = always(() => {
 
 // P6: Searching a known term returns results
 export const validSearchFindsCards = now(() => {
+
   const initialTime = time.current;
   return always(
     now(() => {
@@ -136,4 +137,22 @@ export const validSearchFindsCards = now(() => {
       }),
     ),
   );
+});
+
+// --- Resume page ---
+
+// Extract resume page state (null if not on resume page)
+const resumePageState = extract((state) => {
+  const md = state.document.querySelector("#md");
+  if (!md) return null; // not on resume page
+  const title = state.document.querySelector("#title")?.textContent ?? "";
+  const hasContent = md.children.length > 0 || (md.textContent ?? "").trim().length > 0;
+  return { title, hasContent };
+});
+
+// P7: Resume page always displays content
+export const resumePageShowsContent = always(() => {
+  if (!resumePageState.current) return true; // not on resume page
+  if (resumePageState.current.title === "Loading…") return true; // still loading, not a violation yet
+  return resumePageState.current.hasContent;
 });

@@ -42,6 +42,9 @@ When no search term is entered, the home page must display at least one resume c
 #### P6: Searching a known term returns results
 If the search term matches any resume's title, role, or tags, at least one card must be visible. Ensures the filter logic is correct and doesn't silently discard valid matches.
 
+#### P7: Resume page always displays content
+When viewing a resume, the page must display a title and rendered content. The article area must not be empty after loading completes.
+
 ## Testing
 
 Properties are verified with [Bombadil](https://github.com/antithesishq/bombadil), a property-based testing framework for web UIs. Bombadil autonomously explores the site — clicking links, navigating pages, typing in the search box — while checking that all properties hold in every reachable state. The test specification is in `epiccvs-spec.ts`.
