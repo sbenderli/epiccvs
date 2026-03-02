@@ -20,36 +20,52 @@ This project is a **satirical website** that imagines how famous (or infamous) h
 Content is released under **Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.  
 This means you may share and remix the work, but you cannot use it commercially, and you must provide attribution.  
 
+## Site properties
+
+These are the behavioral guarantees of the site. Any code change must preserve them.
+
+#### P1: No JavaScript errors
+The site must not produce uncaught exceptions, unhandled promise rejections, or console errors during normal use.
+
+#### P2: No broken resources
+All HTTP requests for assets (images, scripts, data files) must succeed. No 4xx or 5xx responses.
+
+#### P3: Navigation is always visible
+Every page must display the navigation header with the brand link, Home, About, and Random CV links.
+
+#### P4: Every resume card links to a valid resume page
+On the home page, every card in the grid must link to `/resume.html?id=<valid-id>`. No broken or missing links.
+
+#### P5: Home page shows cards when search is empty
+When no search term is entered, the home page must display at least one resume card. Ensures data loading and initial rendering work correctly.
+
+#### P6: Searching a known term returns results
+If the search term matches any resume's title, role, or tags, at least one card must be visible. Ensures the filter logic is correct and doesn't silently discard valid matches.
+
 ## Testing
 
-The site is tested with [Bombadil](https://github.com/antithesishq/bombadil), a property-based testing framework for web UIs. Unlike traditional test scripts that check specific scenarios, Bombadil autonomously explores the site — clicking links, navigating pages, typing in the search box — while verifying that properties (assertions) always hold.
+Properties are verified with [Bombadil](https://github.com/antithesishq/bombadil), a property-based testing framework for web UIs. Bombadil autonomously explores the site — clicking links, navigating pages, typing in the search box — while checking that all properties hold in every reachable state. The test specification is in `epiccvs-spec.ts`.
 
 ### Running tests
 
 ```bash
-bombadil test https://epiccvs.com epiccvs-spec.ts --output-path ./results
+# Against the live site
+bombadil test https://epiccvs.com epiccvs-spec.ts --output-path ./results --headless
+
+# Against a local dev server
+python3 -m http.server 8080
+bombadil test http://localhost:8080 epiccvs-spec.ts --output-path ./results --headless
 ```
+
+Add `--exit-on-violation` to stop on the first failure.
 
 > **Note:** `www.epiccvs.com` redirects to `epiccvs.com`, so always use the non-www URL.
 
-### Adding properties
+### Adding a new property
 
-Properties are defined in `epiccvs-spec.ts`. To add a new one, define an extractor to capture DOM state and export a property using temporal logic operators:
-
-```typescript
-import { extract, always } from "@antithesishq/bombadil";
-
-const pageTitle = extract((state) => state.document.title);
-
-export const titleAlwaysPresent = always(() => pageTitle.current !== "");
-```
-
-Key operators:
-- `always(() => ...)` — must hold in every state Bombadil visits
-- `eventually(() => ...).within(n, "seconds")` — must become true within a time bound
-- `.implies(...)` — if the left side holds, the right side must too
-
-See the [Bombadil specification language docs](https://github.com/antithesishq/bombadil) for full details.
+1. Define the property in this README under "Site properties" with the next `P<N>` ID. Describe the expected behavior in plain language, independent of any test framework.
+2. Implement the assertion in `epiccvs-spec.ts`.
+3. Verify by intentionally breaking the site and confirming the violation is caught.
 
 ## Donations
 If the site ever generates revenue (through ads or otherwise), **100% of proceeds, minus hosting costs, will be donated to charitable causes** that promote tolerance, education, and human rights.

@@ -1,12 +1,14 @@
 import { extract, always, now, time, actions, weighted, type Action } from "@antithesishq/bombadil";
 
-// Default properties
+// P1: No JavaScript errors
 export {
-  noHttpErrorCodes,
   noUncaughtExceptions,
   noUnhandledPromiseRejections,
   noConsoleErrors,
 } from "@antithesishq/bombadil/defaults/properties";
+
+// P2: No broken resources
+export { noHttpErrorCodes } from "@antithesishq/bombadil/defaults/properties";
 
 // Default action generators (imported, not exported — combined into a weighted tree below)
 import { clicks, inputs, scroll, navigation } from "@antithesishq/bombadil/defaults/actions";
@@ -20,7 +22,7 @@ const hasNavHeader = extract((state) => {
   return brand !== null && links.length >= 3;
 });
 
-// Property: the navigation header must always be visible on every page
+// P3: Navigation is always visible
 export const navigationAlwaysPresent = always(() => hasNavHeader.current === true);
 
 // Extract whether every visible card has a valid resume link
@@ -32,7 +34,7 @@ const allCardsHaveValidLinks = extract((state) => {
   });
 });
 
-// Property: every card in the grid must always link to a valid resume page
+// P4: Every resume card links to a valid resume page
 export const cardsAlwaysLinkToResumes = always(() => allCardsHaveValidLinks.current === true);
 
 // --- Search behavior ---
@@ -109,15 +111,14 @@ const allCardTexts = extract((state) => {
   return Array.from(cards).map((card) => (card.textContent ?? "").toLowerCase());
 });
 
-// Property: on the home page, an empty search box means at least one card is visible
+// P5: Home page shows cards when search is empty
 export const emptySearchShowsCards = always(() => {
   if (!searchState.current) return true; // not on home page
   if (searchState.current.searchValue !== "") return true; // search is active
   return searchState.current.cardCount > 0;
 });
 
-// Property: if the search term matches any resume from the initial load, results must appear.
-// Uses .implies() so the violation message shows both the condition and the failed assertion.
+// P6: Searching a known term returns results
 export const validSearchFindsCards = now(() => {
   const initialTime = time.current;
   return always(
