@@ -16,3 +16,15 @@ const hasNavHeader = extract((state) => {
 
 // Property: the navigation header must always be visible on every page
 export const navigationAlwaysPresent = always(() => hasNavHeader.current === true);
+
+// Extract whether every visible card has a valid resume link
+const allCardsHaveValidLinks = extract((state) => {
+  const cards = state.document.querySelectorAll("#list .card");
+  return Array.from(cards).every((card) => {
+    const href = card.getAttribute("href") ?? "";
+    return href.startsWith("/resume.html?id=");
+  });
+});
+
+// Property: every card in the grid must always link to a valid resume page
+export const cardsAlwaysLinkToResumes = always(() => allCardsHaveValidLinks.current === true);
