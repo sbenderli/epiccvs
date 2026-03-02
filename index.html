@@ -156,6 +156,9 @@
         if(normalize(item.role).includes(t)) return true;
         if(normalize(item.id).includes(t)) return true;
         if(Array.isArray(item.tags) && item.tags.join(' ').toLowerCase().includes(t)) return true;
+        // Also match against the full concatenated text, as a user sees it on the card
+        const full = [item.title, item.role, item.id, (item.tags||[]).join(' ')].join(' ');
+        if(normalize(full).includes(t)) return true;
         return false;
       }
 
