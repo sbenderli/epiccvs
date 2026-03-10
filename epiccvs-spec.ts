@@ -89,6 +89,21 @@ const searchWithKeywords = actions(() => {
   );
 });
 
+// Click the clear (X) button when search has text
+const clearSearchPoint = extract((state) => {
+  const btn = state.document.querySelector("#clearSearch") as HTMLElement | null;
+  if (!btn || btn.style.display === "none") return null;
+  const rect = btn.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return null;
+  return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+});
+
+const clearSearch = actions(() => {
+  const point = clearSearchPoint.current;
+  if (!point) return []; // button not visible (no search text)
+  return [{ Click: { name: "BUTTON", content: "Clear search", point } } as Action];
+});
+
 // Single weighted action tree — search actions get 3x weight over defaults
 export const allActions = weighted([
   [1, clicks],
@@ -97,6 +112,7 @@ export const allActions = weighted([
   [1, navigation],
   [3, focusSearch],
   [3, searchWithKeywords],
+  [3, clearSearch],
 ]);
 
 // Extract search state on the home page
@@ -116,11 +132,17 @@ const allCardTexts = extract((state) => {
   return Array.from(cards).map((card) => ((card as HTMLElement).innerText ?? "").toLowerCase());
 });
 
-// P5: Home page shows cards when search is empty
-export const emptySearchShowsCards = always(() => {
-  if (!searchState.current) return true; // not on home page
-  if (searchState.current.searchValue !== "") return true; // search is active
-  return searchState.current.cardCount > 0;
+// P5: Clearing search restores all cards
+export const clearingSearchRestoresAllCards = now(() => {
+  const initialTime = time.current;
+  return always(() => {
+    const s = searchState.current;
+    if (!s) return true; // not on home page
+    if (s.searchValue !== "") return true; // search is active, skip
+    const initialTexts = allCardTexts.at(initialTime);
+    if (!initialTexts.length) return true; // no initial data yet
+    return s.cardCount === initialTexts.length;
+  });
 });
 
 // P6: Searching a known term returns results

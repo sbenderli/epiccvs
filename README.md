@@ -36,8 +36,8 @@ Every page must display the navigation header with the brand link, Home, About, 
 #### P4: Every resume card links to a valid resume page
 On the home page, every card in the grid must link to `/resume.html?id=<valid-id>`. No broken or missing links.
 
-#### P5: Home page shows cards when search is empty
-When no search term is entered, the home page must display at least one resume card. Ensures data loading and initial rendering work correctly.
+#### P5: Clearing search restores all cards
+After a search term is entered and then fully cleared, the home page must display the same number of cards as it did at initial page load. Ensures the filter logic fully resets.
 
 #### P6: Searching a known term returns results
 If the search term matches any resume's title, role, or tags, at least one card must be visible. Ensures the filter logic is correct and doesn't silently discard valid matches.
