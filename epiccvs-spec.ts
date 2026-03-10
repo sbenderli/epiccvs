@@ -112,7 +112,7 @@ export const allActions = weighted([
   [1, navigation],
   [3, focusSearch],
   [3, searchWithKeywords],
-  [3, clearSearch],
+  [1, clearSearch],
 ]);
 
 // Extract search state on the home page
@@ -202,12 +202,13 @@ const seeAlsoState = extract((state) => {
   return { currentId, relCardIds };
 });
 
-// P8: "See also" never links to the current resume
-export const seeAlsoExcludesCurrentResume = always(() => {
-  if (!seeAlsoState.current) return true;
+// P8: "See also" shows related resumes and excludes self
+export const seeAlsoShowsRelatedResumes = always(() => {
+  if (!seeAlsoState.current) return true; // not on resume page
+  if (resumePageState.current?.title === "Loading…") return true; // still loading
   const { currentId, relCardIds } = seeAlsoState.current;
-  if (!currentId || relCardIds.length === 0) return true;
-  return !relCardIds.includes(currentId);
+  if (!currentId) return true;
+  return relCardIds.length > 0 && !relCardIds.includes(currentId);
 });
 
 

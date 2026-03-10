@@ -45,8 +45,8 @@ If the search term matches any resume's title, role, or tags, at least one card 
 #### P7: Resume page always displays content
 When viewing a resume, the page must display a title and rendered content. The article area must not be empty after loading completes.
 
-#### P8: "See also" never links to the current resume
-The related resumes section at the bottom of a resume page must not include the resume currently being viewed.
+#### P8: "See also" shows related resumes and excludes self
+The related resumes section at the bottom of a resume page must contain at least one link to another resume, and must not include the resume currently being viewed.
 
 #### P9: No duplicate cards on the home page
 Every card in the grid must be unique. No resume should appear more than once.
